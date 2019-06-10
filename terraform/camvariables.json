@@ -1,0 +1,372 @@
+{
+  "input_datatypes": [],
+  "output_datatypes": [
+    {
+      "name": "kubeconfig",
+      "dataobject": {
+        "name":"${template_input_params.cluster_name}",
+        "attributes":[
+          {
+            "name": "cluster_name",
+            "value": "${template_output_params.cluster_name}"
+          },
+          {
+            "name": "cluster_config",
+            "value": "${template_output_params.cluster_config}"
+          },
+          {
+            "name": "cluster_certificate_authority",
+            "value": "${template_output_params.cluster_certificate_authority}"
+          }              
+        ]
+      }
+    }
+  ],
+  "input_groups": [
+    {
+      "name": "cluster",
+      "label": "GKE Cluster"
+    },
+    {
+      "name": "workernodes",
+      "label": "Worker Nodes"
+    }
+  ],
+  "template_input_params": [
+    {
+      "name": "cluster_name",
+      "type": "string",
+      "description": "Name of the cluster.",
+      "hidden": false,
+      "label": "Cluster Name",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cluster"
+    },
+    {
+      "name": "zone",
+      "description": "The zone the resource should be created in.",
+      "default": "us-central1-a",
+      "options": [
+        {
+          "value": "us-central1-a",
+          "label": "us-central1-a (Iowa, USA)",
+          "default": true
+        },
+        {
+          "value": "us-west1-a",
+          "label": "us-west1-a (Oregon, USA)"
+        },
+        {
+          "value": "us-east1-c",
+          "label": "us-east1-c (South Carolina, USA)"
+        },
+        {
+          "value": "europe-west3-a",
+          "label": "europe-west3-a (Frankfurt, Germany)"
+        },
+        {
+          "value": "asia-south1-a",
+          "label": "asia-south1-a (Mumbai, India)"
+        }
+      ],
+      "type": "string",
+      "required": true,
+      "secured": false,
+      "label": "Zone",
+      "hidden": false,
+      "immutable": false,
+      "group_name": "cluster"
+    },
+    {
+      "name": "kube_version",
+      "type": "string",
+      "description": "Kubernetes version for the cluster; 'latest' for the latest supported version, or version number in X.Y[.Z] format",
+      "default": "latest",
+      "hidden": false,
+      "label": "Kubernetes version",
+      "secured": false,
+      "required": true,
+      "immutable": false,
+      "group_name": "cluster"
+    }, 
+    {
+        "name": "machine_type",
+        "description": "The machine type to create.",
+        "default": "n1-standard-1",
+        "options": [
+          {
+            "value": "n1-standard-1",
+            "label": "n1-standard-1 (1 vCPU, 3.75 Memory(GB))",
+            "default": true
+          },
+          {
+            "value": "n1-standard-2",
+            "label": "n1-standard-2 (2 vCPU, 7.50 Memory(GB))"
+          },
+          {
+            "value": "n1-highmem-2",
+            "label": "n1-highmem-2 (2 vCPU, 13 Memory(GB))"
+          },
+          {
+            "value": "n1-highcpu-2",
+            "label": "n1-highcpu-2 (2 vCPU, 1.80 Memory(GB))"
+          },
+          {
+            "value": "n1-highcpu-4",
+            "label": "n1-highcpu-4 (4 vCPU, 3.60 Memory(GB))"
+          }
+        ],
+        "type": "string",
+        "required": true,
+        "secured": false,
+        "label": "Instance Machine Type",
+        "hidden": false,
+        "immutable": false
+    },
+    {
+        "name": "disk_size_gb",
+        "type": "string",
+        "description": "Size of the worker node disk",
+        "default": "100",
+        "hidden": false,
+        "label": "Disk size (GB)",
+        "secured": false,
+        "required": true,
+        "immutable": false,
+        "group_name": "workernodes"
+    },
+    {
+        "name": "disk_type",
+        "description": "Type of the worker node disk",
+        "default": "pd-standard",
+        "options": [
+          {
+            "value": "pd-standard",
+            "label": "pd-standard",
+            "default": true
+          },
+          {
+            "value": "pd-ssd",
+            "label": "pd-ssd"
+          }
+        ],
+        "type": "string",
+        "required": true,
+        "secured": false,
+        "label": "Disk type",
+        "hidden": false,
+        "immutable": false
+    },
+    {
+        "name": "initial_worker_count",
+        "type": "string",
+        "description": "Initial number of worker nodes",
+        "hidden": false,
+        "label": "Initial number of worker nodes",
+        "secured": false,
+        "options": [
+          {
+            "value": "1",
+            "label": "1",
+            "default": true
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "7",
+            "label": "7"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          }
+        ],
+        "required": true,
+        "immutable": false,
+        "group_name": "workernodes"
+    },
+    {
+        "name": "min_worker_count",
+        "type": "string",
+        "description": "Minimum number of worker nodes",
+        "hidden": false,
+        "label": "Minimum number of worker nodes",
+        "secured": false,
+        "options": [
+          {
+            "value": "1",
+            "label": "1",
+            "default": true
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "7",
+            "label": "7"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          }
+        ],
+        "required": true,
+        "immutable": false,
+        "group_name": "workernodes"
+    },
+    {
+        "name": "max_worker_count",
+        "type": "string",
+        "description": "Maximum number of worker nodes",
+        "hidden": false,
+        "label": "Maximum number of worker nodes",
+        "secured": false,
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3",
+            "default": true
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "7",
+            "label": "7"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          }
+        ],
+        "required": true,
+        "immutable": false,
+        "group_name": "workernodes"
+    }
+  ],
+  "template_output_params": [
+    {
+        "name": "cluster_name",
+        "type": "string",
+        "description": "Cluster name or ID.",
+        "label": "Cluster name",
+        "hidden": false,
+        "secured": false,
+        "immutable": false
+    },          
+    {
+        "name": "cluster_config",
+        "type": "string",
+        "description": "Base64 encoded content of the kubeconfig yaml file.",
+        "label": "Cluster configuration",
+        "secured": true,
+        "hidden": false,
+        "immutable": false
+    },
+    {
+        "name": "cluster_certificate_authority",
+        "type": "string",
+        "description": "Base64 encoded certificate authority used to connect to the cluster.",
+        "label": "Cluster certificate authority",
+        "secured": true,
+        "hidden": false,
+        "immutable": false
+    },
+    {
+        "name": "cluster_zone",
+        "type": "string",
+        "description": "Region/Location where the cluster is deployed within the cloud.",
+        "label": "Cluster zone",
+        "secured": false,
+        "hidden": false,
+        "immutable": false
+    },
+    {
+        "name": "cluster_endpoint",
+        "type": "string",
+        "description": "Cluster endpoint IP address",
+        "label": "Cluster endpoint",
+        "secured": false,
+        "hidden": false,
+        "immutable": false
+    }
+  ]
+}
