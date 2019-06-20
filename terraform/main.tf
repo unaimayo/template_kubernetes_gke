@@ -48,6 +48,7 @@ resource "google_container_node_pool" "gke_cluster_pool" {
   location   = "${var.zone}"
   cluster    = "${google_container_cluster.gke_cluster.name}"
   node_count = "${var.initial_worker_count}"
+  version    = "${local.requested_version}"
 
   autoscaling {
     min_node_count = "${var.min_worker_count}"
@@ -75,5 +76,11 @@ resource "google_container_node_pool" "gke_cluster_pool" {
       "https://www.googleapis.com/auth/trace.append",
       "https://www.googleapis.com/auth/compute",
     ]
+  }
+  
+  timeouts {
+    create = "30m"
+    update = "30m"
+    delete = "30m"
   }
 }
