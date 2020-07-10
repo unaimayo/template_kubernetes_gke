@@ -14,7 +14,7 @@ Via this template, a configurable number of worker nodes can be deployed, with a
 
 | Parameter name         | Parameter description |
 | :---                   | :---        |
-| cluster_name           | Name of the GKE cluster |
+| cluster_name           | Name of the GKE cluster. Cluster name can have lower case alphabets, numbers and dash. Must start with lower case alphabet and end with alpha-numeric character. Maximum length is 32 characters. |
 | zone                   | Zone within the cloud in which to create the cluster |
 | kube_version           | Kubernetes version for the cluster. Specify 'latest' for the most recent kubernetes version supported by the Kubernetes Service, or a version number in the X.Y[.Z] format (e.g. 1.13 or 1.13.5).  The most recent maintenance release for the specified version will be selected. |
 | machine_type           | Machine type for worker nodes |
