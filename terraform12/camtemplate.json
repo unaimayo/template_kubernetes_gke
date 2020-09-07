@@ -1,6 +1,6 @@
 {
-  "name": "Google Kubernetes Engine for Terraform 0.12.x",
-  "description": "Managed Kubernetes Service within Google Cloud for Terraform 0.12.x",
+  "name": "Google Kubernetes Engine for Terraform 0.12.x with VPC network",
+  "description": "Managed Kubernetes Service within Google Cloud for Terraform 0.12.x using VPC network",
   "version": "1.0",
   "type": "prebuilt",
   "manifest": {
