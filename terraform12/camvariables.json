@@ -50,12 +50,11 @@
     {
       "name": "zone",
       "description": "The zone the resource should be created in.",
-      "default": "us-central1-a",
+      "default": "europe-north1-a",
       "options": [
         {
           "value": "us-central1-a",
-          "label": "us-central1-a (Iowa, USA)",
-          "default": true
+          "label": "us-central1-a (Iowa, USA)"
         },
         {
           "value": "us-west1-a",
@@ -72,6 +71,11 @@
         {
           "value": "asia-south1-a",
           "label": "asia-south1-a (Mumbai, India)"
+        },
+        {
+          "value": "europe-north1-a",
+          "label": "europe-north1-a (Hamina, Finland)",
+          "default": true
         }
       ],
       "type": "string",
@@ -86,7 +90,7 @@
       "name": "kube_version",
       "type": "string",
       "description": "Kubernetes version for the cluster; 'latest' for the latest supported version, or version number in X.Y[.Z] format",
-      "default": "latest",
+      "default": "1.14.10-gke.46",
       "hidden": false,
       "label": "Kubernetes version",
       "secured": false,

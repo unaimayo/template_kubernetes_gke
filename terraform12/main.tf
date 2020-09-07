@@ -34,6 +34,15 @@ resource "google_container_cluster" "gke_cluster" {
 
   initial_node_count = var.initial_worker_count
 
+
+  network    = "default"
+  subnetwork = "default"
+
+  ip_allocation_policy {
+    cluster_ipv4_cidr_block  = "/14"
+    services_ipv4_cidr_block = "/20"
+  }
+
   master_auth {
     username = ""
     password = ""
