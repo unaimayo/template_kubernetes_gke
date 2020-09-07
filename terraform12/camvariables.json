@@ -104,6 +104,11 @@
         "default": "n1-standard-1",
         "options": [
           {
+            "value": "e2-custom-4-8192",
+            "label": "e2-custom-4-8192 (4 vCPU, 8 Memory(GB))",
+            "default": true
+          },
+          {
             "value": "n1-standard-1",
             "label": "n1-standard-1 (1 vCPU, 3.75 Memory(GB))",
             "default": true
